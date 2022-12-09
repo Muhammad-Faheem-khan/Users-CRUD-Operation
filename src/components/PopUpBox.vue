@@ -46,10 +46,10 @@
       </div>
 
       <div class="button-container">
-        <button type="button" class="update-btn button" @click="saveData">
+        <button type="button" :disabled="disableUpdate"  class="update-btn button" @click="saveData">
           Update
         </button>
-        <button type="button" class="save-btn button" @click="saveNewUser">
+        <button type="button" :disabled="disableAddUser" class="save-btn button" @click="saveNewUser">
           Add User
         </button>
       </div>
@@ -69,6 +69,8 @@ export default {
         gender: "",
         email: "",
       },
+      disableUpdate: true,
+      disableAddUser: true,
     };
   },
   methods: {
@@ -89,9 +91,13 @@ export default {
     },
     setData: function (value) {
       this.newUser = {...value};
+      this.disableUpdate = false
+      this.disableAddUser = true
     },
     setNewUser: function (value) {
       this.newUser = value;
+      this.disableAddUser = false
+      this.disableUpdate = true
     },
   },
   created: function () {

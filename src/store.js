@@ -26,7 +26,6 @@ export const store = new Vuex.Store({
         getAllUsers() {
             return store.state.usersList
         }
-
     },
     mutations: {
         userListUpdate(context, userList) {
